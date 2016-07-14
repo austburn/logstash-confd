@@ -1,4 +1,4 @@
-{{ range jsonArray ( getenv "INPUT" ) }}
+{{ range jsonArray ( getenv "INPUTS" ) }}
 input {
     file {
         path => "{{ .path }}"

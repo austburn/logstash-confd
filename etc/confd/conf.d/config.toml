@@ -2,5 +2,5 @@
 src = "input.tmpl"
 dest = "/opt/logstash/config/input.conf"
 keys = [
-    "INPUT"
+    "INPUTS"
 ]
