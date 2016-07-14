@@ -1,0 +1,19 @@
+{{ range jsonArray ( getenv "INPUT" ) }}
+input {
+    file {
+        path => "{{ .path }}"
+
+        {{ if "{{ .tags }}" }}
+        tags => [ {{ range $index, $tag := .tags }}{{ if ne $index 0 }}, {{ end }}"{{ $tag }}"{{ end }} ]
+        {{ end }}
+
+        {{ if "{{ .fields }}" }}
+        add_field => {
+            {{ range .fields }}
+            "{{ .field }}" => "{{ .value }}"
+            {{ end }}
+        }
+        {{ end }}
+    }
+}
+{{end}}
