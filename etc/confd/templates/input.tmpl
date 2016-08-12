@@ -1,19 +1,16 @@
-{{ range jsonArray ( getenv "INPUTS" ) }}
 input {
     file {
-        path => "{{ .path }}"
-
-        {{ if "{{ .tags }}" }}
-        tags => [ {{ range $index, $tag := .tags }}{{ if ne $index 0 }}, {{ end }}"{{ $tag }}"{{ end }} ]
-        {{ end }}
-
-        {{ if "{{ .fields }}" }}
+        path => "/var/log/app/web.log"
+        tags => [ "web" ]
         add_field => {
-            {{ range .fields }}
-            "{{ .field }}" => "{{ .value }}"
-            {{ end }}
+            "environment" => "{{ getenv "ENVIRONMENT" }}"
+            "region" => "{{ getenv "REGION" }}"
         }
-        {{ end }}
     }
 }
-{{end}}
+
+output {
+    stdout {
+        codec => rubydebug
+    }
+}

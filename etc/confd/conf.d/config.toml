@@ -2,5 +2,6 @@
 src = "input.tmpl"
 dest = "/opt/logstash/config/input.conf"
 keys = [
-    "INPUTS"
+    "ENVIRONMENT",
+    "REGION"
 ]
