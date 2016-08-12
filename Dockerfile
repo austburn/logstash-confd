@@ -5,6 +5,7 @@ RUN chmod +x /usr/local/bin/confd
 
 COPY /etc/confd /etc/confd
 RUN mkdir /opt/logstash/config /opt/logstash/log
+ADD conf /opt/logstash/config
 
 CMD /usr/local/bin/confd -confdir /etc/confd/ -onetime -backend env && \
     logstash agent -f /opt/logstash/config -l /opt/logstash/log/logstash.log

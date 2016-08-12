@@ -1,16 +1,8 @@
-input {
-    file {
-        path => "/var/log/app/web.log"
-        tags => [ "web" ]
+filter {
+    mutate {
         add_field => {
             "environment" => "{{ getenv "ENVIRONMENT" }}"
             "region" => "{{ getenv "REGION" }}"
         }
-    }
-}
-
-output {
-    stdout {
-        codec => rubydebug
     }
 }
