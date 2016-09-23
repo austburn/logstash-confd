@@ -4,7 +4,7 @@ This is a crazy idea to use [https://github.com/kelseyhightower/confd](confd) to
 configuration.
 
 # Example
-`docker run --env 'INPUTS=[{"path": "/var/log/auth.log", "tags": ["auth"], "fields": [{"field": "environment", "value": "dev"}]}] logstash-confd`
+`docker run -e ENVIRONMENT=dev -e REGION=dfw logstash-confd`
 
 ```
 {
@@ -14,8 +14,6 @@ configuration.
           "path"        => "/var/log/auth.log",
           "host"        => "dce896cc9c5c",
           "environment" => "dev",
-          "tags"        => [
-        [0] "auth"
-    ]
+          "region"      => "dfw"
 }
 ```
