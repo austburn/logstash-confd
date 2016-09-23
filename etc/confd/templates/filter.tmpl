@@ -1,0 +1,8 @@
+filter {
+    mutate {
+        add_field => {
+            "environment" => "{{ getenv "ENVIRONMENT" }}"
+            "region" => "{{ getenv "REGION" }}"
+        }
+    }
+}

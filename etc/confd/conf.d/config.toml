@@ -1,6 +1,7 @@
 [template]
-src = "input.tmpl"
-dest = "/opt/logstash/config/input.conf"
+src = "filter.tmpl"
+dest = "/opt/logstash/config/filter.conf"
 keys = [
-    "INPUTS"
+    "ENVIRONMENT",
+    "REGION"
 ]
